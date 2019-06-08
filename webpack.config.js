@@ -50,7 +50,8 @@ module.exports = [
       // Copy Assets, Widgets, and Workers to a static directory
       new CopyWebpackPlugin([
         { from: 'libs', to: 'libs' },
-        { from: 'images', to: 'images' }
+        { from: 'images', to: 'images' },
+        { from: 'styles', to: 'styles' }
       ]),
       new webpack.DefinePlugin({
         // Define relative base path in  for loading assets
