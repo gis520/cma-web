@@ -113,3 +113,65 @@ body {
 .tool-show>.tool-text {
     color: #fff;
 }
+
+.gexian {
+    float: left;
+    color: #808080;
+    width: 14px;
+    text-align: center;
+    line-height: 35px;
+    height: 35px;
+}
+
+.mapSwitchTooltip {
+    position: absolute;
+    top: 235px;
+    left: 60px;
+    width: 328px;
+    height: 35px;
+    background-color: #ffffff;
+    opacity: 0.85;
+    border-radius: 3px;
+    /* display: none; */
+    z-index: 1111;
+}
+
+.mapSwitchTooltip .cont {
+    width: 59px;
+    height: 25px;
+    background-color: #ffffff;
+    float: left;
+    text-align: center;
+    padding-top: 5px;
+    padding-left: 1px;
+}
+
+.mapSwitchTooltip .item {
+    width: 100px;
+    height: 35px;
+    background-color: rgb(255, 255, 255);
+    float: left;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.mapSwitchTooltip .item img {
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+.mapSwitchTooltip .cont span.text {
+    font-family: 微软雅黑;
+    font-size: 13px;
+    color: rgb(102, 102, 102);
+    cursor: pointer;
+}
+
+.mapSwitchTooltip .icon {
+    width: 40px;
+    height: 35px;
+    background-color: #ffffff;
+    float: left;
+    text-align: center;
+}
