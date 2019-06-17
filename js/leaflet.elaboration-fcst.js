@@ -142,14 +142,14 @@ maphelper.switchMap = function (mapType) {
 	if (maphelper.map == null || maphelper.commonmap == null || maphelper.administrativemap == null)
 		return;
 	switch (mapType) {
-		case 'political':
+		case 'satellite':
 			maphelper.map.removeLayer(maphelper.commonmap);
 			maphelper.map.removeLayer(maphelper.termap);
 			maphelper.map.removeLayer(maphelper.reliefmap);
 			maphelper.map.addLayer(maphelper.administrativemap);
 			maphelper.map.addLayer(maphelper.reliefmap);
 			break;
-		case 'satellite':
+		case 'political':
 			maphelper.map.removeLayer(maphelper.administrativemap);
 			maphelper.map.removeLayer(maphelper.termap);
 			maphelper.map.removeLayer(maphelper.reliefmap);

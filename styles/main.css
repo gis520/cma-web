@@ -104,13 +104,13 @@ body {
 }
 
 
-#legend.tool-show {
+.leftTools .highlight {
     background: rgb(51, 133, 255);
     cursor: pointer;
     color: rgb(255, 255, 255);
 }
 
-.tool-show>.tool-text {
+.highlight>.tool-text {
     color: #fff;
 }
 
@@ -132,7 +132,7 @@ body {
     background-color: #ffffff;
     opacity: 0.85;
     border-radius: 3px;
-    /* display: none; */
+    display: none;
     z-index: 1111;
 }
 
