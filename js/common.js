@@ -1,4 +1,5 @@
-import { maphelper } from './leaflet.elaboration-fcst';
+import { maphelper } from './maphelper';
+import staPoint from "./station-point";
 
 export let common = common || {};
 common.initMap = function() {

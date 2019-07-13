@@ -408,7 +408,7 @@ maphelper.addImage = function (imageUrl, minX, minY, maxX, maxY, f) {
 			imageOverlay._image.hidden = flag;
 		},
 		changeUrl: function (url, f) {
-			timeline.pause()
+			// timeline.pause();
 			imageOverlay.setOpacity(f);
 			imageOverlay.setUrl(url);
 		},

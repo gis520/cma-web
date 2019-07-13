@@ -1,76 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>气象数据综合展示平台 | by giscafer</title>
+    <link href="./styles/main.css" rel="stylesheet" />
+    <link href="./libs/leaflet.css" rel="stylesheet" />
+    <link href="./libs/leaflet.label.css" rel="stylesheet" />
+    <link href="./libs/toastr.min.css" rel="stylesheet" />
+    <script src="./libs/jquery.min.js"></script>
+    <script src="./libs/leaflet.js"></script>
+    <script src="./libs/leaflet.label.js"></script>
+    <script src="./libs/toastr.min.js"></script>
+    <script src="./libs/moment.min.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>气象数据综合展示平台 | by giscafer</title>
-  <link href="./styles/main.css" rel="stylesheet" />
-  <link href="./libs/leaflet.css" rel="stylesheet" />
-  <link href="./libs/leaflet.label.css" rel="stylesheet" />
-  <link href="./libs/toastr.min.css" rel="stylesheet" />
-  <script src="./libs/jquery.min.js"></script>
-  <script src="./libs/leaflet.js"></script>
-  <script src="./libs/leaflet.label.js"></script>
-  <script src="./libs/toastr.min.js"></script>
-  <script src="./libs/moment.min.js"></script>
-</head>
-
-
-<body>
-  <div class="main-content">
-    <div class="leftLogo">
-      <div class="logo"><img src="./images/logo.png"></div>
-      <div class="logoTitle"><a href="/">气象数据综合展示</a>
+  <body>
+    <div class="main-content">
+      <div class="leftLogo">
+        <div class="logo"><img src="./images/logo.png" /></div>
+        <div class="logoTitle"><a href="/">气象数据综合展示</a></div>
+      </div>
+      <!-- 左侧工具菜单 -->
+      <div id="leftTools" class="leftTools">
+        <div id="mapSwitch" class="mapSwitch sel highlight">
+          <span class="tool-text">地图</span>
+        </div>
+        <div id="tool" class="tool">
+          <span class="tool-text">工具</span>
+        </div>
+        <div id="legend" class="">
+          <span class="tool-text">图例</span>
+        </div>
+      </div>
+      <div id="mapSwitchTooltip" class="mapSwitchTooltip">
+        <div class="item">
+          <div class="icon">
+            <img class="img_political" src="./images/political.png" />
+          </div>
+          <div class="cont">
+            <span class="text" data-type="political" class="text">行政图</span>
+          </div>
+        </div>
+        <div class="gexian">|</div>
+        <div class="item">
+          <div class="icon">
+            <img class="img_satellite" src="./images/satellite.png" />
+          </div>
+          <div class="cont">
+            <span class="text" data-type="satellite">卫星图</span>
+          </div>
+        </div>
+        <div class="gexian">|</div>
+        <div class="item">
+          <div class="icon">
+            <img class="img_topographic" src="./images/topographic.png" />
+          </div>
+          <div class="cont">
+            <span class="text" data-type="topographic">地形图</span>
+          </div>
+        </div>
+      </div>
+      <div id="map"></div>
+      <!-- 右上角工具菜单 -->
+      <div class="conditionBox">
+        <ul>
+          <li class="yujing active" id="warning">预警<b></b></li>
+          <li class="yubao" id="fcst">预报<b></b></li>
+          <li class="shikuang" id="sk">实况<b></b></li>
+          <li class="taifeng" id="typhoon">台风<b></b></li>
+          <li class="leida" id="radar">雷达<b></b></li>
+          <li class="weixing" id="sata">卫星<b></b></li>
+          <li class="atdt" id="atdt">三维闪电</li>
+        </ul>
+        <div class="clear"></div>
+      </div>
+      <!-- 实况-子菜单 -->
+      <div class="wrap_list wrap_mlist" id="skmenu">
+        <div class="menuList off">
+          <ul>
+            <li id="115990101" unit="℃">气温</li>
+            <li id="115990102" unit="hpa">气压</li>
+            <li id="115990103" unit="%">相对湿度</li>
+            <li id="115990104" unit="m/s">风</li>
+            <li id="1150101020" unit="mm">降水</li>
+          </ul>
+        </div>
       </div>
     </div>
-    <div id="leftTools" class="leftTools">
-      <div id="mapSwitch" class="mapSwitch sel highlight">
-        <span class="tool-text">地图</span>
-      </div>
-      <div id="tool" class="tool">
-        <span class="tool-text">工具</span>
-      </div>
-      <div id="legend" class="">
-        <span class="tool-text">图例</span>
-      </div>
-    </div>
-    <div id="mapSwitchTooltip" class="mapSwitchTooltip">
-      <div class="item">
-        <div class="icon">
-          <img class="img_political" src="./images/political.png">
-        </div>
-        <div class="cont">
-          <span class="text" data-type="political" class="text">行政图</span>
-        </div>
-      </div>
-      <div class="gexian">|</div>
-      <div class="item">
-        <div class="icon">
-          <img class="img_satellite" src="./images/satellite.png">
-        </div>
-        <div class="cont">
-          <span class="text" data-type="satellite">卫星图</span>
-        </div>
-      </div>
-      <div class="gexian">|</div>
-      <div class="item">
-        <div class="icon">
-          <img class="img_topographic" src="./images/topographic.png">
-        </div>
-        <div class="cont">
-          <span class="text" data-type="topographic">地形图</span>
-        </div>
-      </div>
-    </div>
-    <div id="map"></div>
-  </div>
-  <script>
-    console.log('\nWebGIS 入门实战教程：https://xiaozhuanlan.com/webgis ，\n');
-
-  </script>
-  <script src="./libs/leaflet.TileLayer.js"></script>
-</body>
-
+    <script>
+      console.log(
+        "\nWebGIS 入门实战教程：https://xiaozhuanlan.com/webgis ，\n"
+      );
+      var ctx = "http://data.cma.cn/dataGis";
+      var globalParam = {};
+    </script>
+    <script src="./libs/leaflet.TileLayer.js"></script>
+    <script src="./libs/echarts.js"></script>
+  </body>
 </html>
