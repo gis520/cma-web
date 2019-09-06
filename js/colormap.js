@@ -5,6 +5,7 @@
 
 import staPoint from "./station-point";
 import { maphelper } from "./maphelper";
+import { common } from "./common";
 /**
  * flag=1 格点 flag=2站点 flag=3预报
  */

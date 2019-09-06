@@ -8,9 +8,9 @@ import { maphelper, BoxOverlay } from "./js/maphelper";
 import { common } from "./js/common.js";
 import staPoint from "./js/station-point";
 import { getColorMap, getLegend } from "./js/colormap";
+import { windyshow } from "./js/windflow/windutil";
 
-let sktimeline = {},
-  index = 0;
+let sktimeline = {};
 
 $(function() {
   $("#map").css("height", window.innerHeight + "px");
@@ -68,7 +68,7 @@ $(function() {
   );
 });
 
-//实况温压湿风降水切换事件
+//实况气温、气压、湿度、风、降水切换处理逻辑
 $(".menuList li").on("click", function() {
   if (!$(this).hasClass("lsel")) {
     globalParam.skChecked = true;
@@ -107,34 +107,28 @@ $(".menuList li").on("click", function() {
 
     if (globalParam.staid == "115990101") {
       //气温
-      //				$(".skright").css("display","block");
+      //$(".skright").css("display","block");
       $(".typhoonBox").show();
       $(".zhezhao").hide(); //遮罩隐藏
       clickShow();
-      index = 0;
     } else if (globalParam.staid == "115990103") {
       //相对湿度
       //				$(".typhoonBox").show();
       //				$(".zhezhao").hide();//遮罩隐藏
       clickShow();
-      index = 1;
     } else if (globalParam.staid == "1150101020") {
       //降水
 
       clickShow();
-      index = 2;
     } else if (globalParam.staid == "115990102") {
       //气压
 
       clickShow();
-      index = 3;
-      document.getElementById("rainFalls").style.display = "none";
-      document.getElementById("windBig").style.display = "none";
+      // document.getElementById("rainFalls").style.display = "none";
+      // document.getElementById("windBig").style.display = "none";
     } else if (globalParam.staid == "115990104") {
       //风
-
       clickShow();
-      index = 4;
     }
 
     globalParam.staid = $(this).attr("id");
@@ -236,31 +230,5 @@ $(".menuList li").on("click", function() {
     globalParam.staid = "115990101";
     globalParam.elename = "气温";
     globalParam.unit = "℃";
-    /* 
-    if (globalParam.clickFlag) {
-      if (globalParam.analyseChecked) {
-        staPoint.clearEchartPoint();
-        staPoint.getAreaSta(
-          globalParam.analyseId,
-          globalParam.lngOf80km,
-          globalParam.latOf80km,
-          staPoint.datetime,
-          true
-        );
-      } else {
-        globalParam.staid = "115990101";
-        globalParam.elename = "气温";
-        globalParam.unit = "℃";
-
-        staPoint.clearEchartPoint();
-        staPoint.getAreaSta(
-          globalParam.staid,
-          globalParam.lngOf80km,
-          globalParam.latOf80km,
-          staPoint.datetime,
-          true
-        );
-      }
-    } */
   }
 });
