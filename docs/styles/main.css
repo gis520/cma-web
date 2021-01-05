@@ -1,0 +1,340 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.main-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* leaflet 默认map control */
+.main-content .leaflet-top {
+  top: 100px;
+  left: 11px;
+}
+
+.main-content #map {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+}
+
+/* 菜单样式 */
+.leftLogo {
+  background: rgba(0, 0, 0, 0) url("../images/bglogo.png") no-repeat scroll 0 0 /
+    254px 54px;
+  height: 52px;
+  left: 20px;
+  position: absolute;
+  top: 20px;
+  width: 257px;
+  z-index: 1000;
+}
+
+.logo {
+  float: left;
+  margin: 5px 10px;
+}
+
+.logoTitle {
+  float: left;
+  line-height: 50px;
+  font-size: 22px;
+  color: #233628;
+  font-family: "微软雅黑";
+}
+
+.logoTitle a {
+  text-decoration: none;
+  color: #233628;
+}
+
+#leftTools {
+  position: absolute;
+  left: 22px;
+  top: 230px;
+  width: 35px;
+  height: 120px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px grey;
+  z-index: 1000;
+}
+
+.mapSwitch {
+  height: 40px;
+  width: 35px;
+  text-align: center;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background: rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+#tool {
+  float: left;
+  height: 40px;
+  width: 35px;
+  text-align: center;
+}
+
+#legend {
+  float: left;
+  height: 40px;
+  width: 35px;
+  text-align: center;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.tool-text {
+  color: rgb(67, 67, 67);
+  font-size: 13px;
+  writing-mode: tb-rl;
+  margin-top: 7px;
+}
+
+.leftTools .highlight {
+  background: rgb(51, 133, 255);
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+}
+
+.highlight > .tool-text {
+  color: #fff;
+}
+
+.gexian {
+  float: left;
+  color: #808080;
+  width: 14px;
+  text-align: center;
+  line-height: 35px;
+  height: 35px;
+}
+
+.mapSwitchTooltip {
+  position: absolute;
+  top: 235px;
+  left: 57px;
+  width: 328px;
+  height: 35px;
+  background-color: #ffffff;
+  opacity: 0.85;
+  border-radius: 3px;
+  display: none;
+  z-index: 1111;
+}
+
+.mapSwitchTooltip .cont {
+  width: 59px;
+  height: 25px;
+  background-color: #ffffff;
+  float: left;
+  text-align: center;
+  padding-top: 5px;
+  padding-left: 1px;
+}
+
+.mapSwitchTooltip .item {
+  width: 100px;
+  height: 35px;
+  background-color: rgb(255, 255, 255);
+  float: left;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.mapSwitchTooltip .item img {
+  margin-left: 15px;
+  margin-top: 10px;
+}
+
+.mapSwitchTooltip .cont span.text {
+  font-family: 微软雅黑;
+  font-size: 13px;
+  color: rgb(102, 102, 102);
+  cursor: pointer;
+}
+
+.mapSwitchTooltip .icon {
+  width: 40px;
+  height: 35px;
+  background-color: #ffffff;
+  float: left;
+  text-align: center;
+}
+
+.conditionBox {
+  position: absolute;
+  z-index: 600;
+  right: 20px;
+  top: 20px;
+  z-index: 1000;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 2px 2px 2px #aaa;
+}
+.conditionBox > ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  margin: 0 0 0 15px;
+}
+.conditionBox b {
+  border-left: 1px solid #dedede;
+  border-right: 1px solid #fff;
+  margin-left: 15px;
+}
+.conditionBox > ul > li {
+  float: left;
+  padding-left: 25px;
+  width: 60px;
+  height: 48px;
+  line-height: 50px;
+  background-position: 5px 17px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: "微软雅黑";
+  color: #686c7e;
+}
+
+.yujing {
+  background-image: url("../images/yj.png");
+}
+.yujing.active {
+  background-image: url("../images/yjs.png");
+  color: rgb(0, 49, 255);
+}
+
+.zaiqing {
+  background-image: url("../images/zq.png");
+}
+.zaiqing.active {
+  background-image: url("../images/zqs.png");
+  color: rgb(0, 49, 255);
+}
+
+.shikuang {
+  background-image: url("../images/sk.png");
+  position: relative;
+}
+.shikuang.active {
+  background-image: url("../images/sks.png");
+  position: relative;
+  color: rgb(0, 49, 255);
+}
+
+.yubao {
+  background-image: url("../images/yb.png");
+  position: relative;
+}
+.yubao.active {
+  background-image: url("../images/ybs.png");
+  position: relative;
+  color: rgb(0, 49, 255);
+}
+
+.taifeng {
+  background-image: url("../images/tf.png");
+}
+.taifeng.active {
+  background-image: url("../images/tfs.png");
+  color: rgb(0, 49, 255);
+}
+
+.atdt {
+  padding-right: 10px;
+  background-image: url("../images/sd.png");
+  -webkit-background-size: auto 17px;
+  background-size: auto 17px;
+}
+
+.conditionBox > ul > li.fenxi {
+  background-image: url("../images/rh.png");
+  width: 80px;
+}
+
+.leida {
+  background-image: url("../images/ld.png");
+}
+
+.leida.active {
+  background-image: url("../images/lds.png");
+  color: rgb(0, 49, 255);
+}
+
+.weixing {
+  background-image: url("../images/wx.png");
+}
+.weixing.active {
+  background-image: url("../images/wxs.png");
+  color: rgb(0, 49, 255);
+}
+
+.clear {
+  clear: both;
+}
+
+.wrap_list {
+  position: absolute;
+  z-index: 600;
+  z-index: 1000;
+  top: 66px;
+}
+
+.wrap_mlist {
+  right: 375px;
+  display: none;
+}
+
+.wrap_flist {
+  right: 469px;
+}
+
+.wrap_wlist {
+  right: 555px;
+}
+
+.wrap_glist {
+  right: 216px;
+}
+
+.menuList {
+  margin-top: 5px;
+  background-color: #fff;
+  width: 85px;
+  border-radius: 6px;
+  box-shadow: 2px 2px 2px #aaa;
+  overflow: hidden;
+  padding-bottom: 6px;
+}
+
+.menuList li {
+  width: 60px;
+  background-image: url(../images/listIcon.png);
+  padding-left: 20px;
+  background-position: 6px 12px;
+  font-size: 14px;
+  height: 26px;
+  line-height: 26px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+}
+
+.menuList li.active {
+  background-image: url(../images/listIcons.png);
+  color: rgb(0, 49, 255);
+}
+
