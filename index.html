@@ -5,15 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>气象数据综合展示平台 | by giscafer</title>
+    <link href="./static/ultras/css/gis.css" rel="stylesheet" />
     <link href="./styles/main.css" rel="stylesheet" />
     <link href="./libs/leaflet.css" rel="stylesheet" />
     <link href="./libs/leaflet.label.css" rel="stylesheet" />
     <link href="./libs/toastr.min.css" rel="stylesheet" />
     <script src="./libs/jquery.min.js"></script>
+    <script src="./libs/jquery.extend.js"></script>
     <script src="./libs/leaflet.js"></script>
     <script src="./libs/leaflet.label.js"></script>
     <script src="./libs/toastr.min.js"></script>
     <script src="./libs/moment.min.js"></script>
+    <script src="./libs/eventemitter.min.js"></script>
+    <script src="./libs/async.min.js"></script>
   </head>
 
   <body>
@@ -49,7 +53,9 @@
             <img class="img_satellite" src="./images/satellite.png" />
           </div>
           <div class="cont">
-            <span class="text" data-type="satellite">卫星图</span>
+            <span id="satellite" class="text" data-type="satellite"
+              >卫星图</span
+            >
           </div>
         </div>
         <div class="gexian">|</div>
@@ -76,6 +82,17 @@
         </ul>
         <div class="clear"></div>
       </div>
+      <!-- 预警-子菜单 -->
+      <div class="wrap_list wrap_wlist">
+        <div class="wtimesList off">
+          <ul>
+            <li id="3h" class="wsel">3H</li>
+            <li id="6h">6H</li>
+            <li id="12h">12H</li>
+            <li id="24h">24H</li>
+          </ul>
+        </div>
+      </div>
       <!-- 实况-子菜单 -->
       <div class="wrap_list wrap_mlist" id="skmenu">
         <div class="menuList off">
@@ -88,12 +105,113 @@
           </ul>
         </div>
       </div>
+      <!-- 播放 -->
+      <div class="playDiv">
+        <div class="timeName2"></div>
+        <div class="playBox off">
+          <ul class="jindu">
+            <li id="start"></li>
+            <li class="psel" id="0"></li>
+            <li id="1"></li>
+            <li id="2"></li>
+            <li id="3"></li>
+            <li id="4"></li>
+            <li id="5"></li>
+            <li id="6"></li>
+            <li id="7"></li>
+            <li id="8"></li>
+            <li id="9"></li>
+            <li id="10"></li>
+          </ul>
+          <ul class="anniu">
+            <li class="pre"></li>
+            <li id="playBtn" class="play"></li>
+            <li class="nex"></li>
+          </ul>
+        </div>
+      </div>
+      <!-- 图例 -->
+      <div class="wrap_legend">
+        <ul class="legend">
+          <li class="lgd_warning" style="display: none"></li>
+          <li class="lgd_disaster" style="display: none"></li>
+          <li class="lgd_fcst" style="display: none"></li>
+          <li class="lgd_sk" style="display: none"></li>
+          <li class="lgd_tf" style="display: none">
+            <div class="lgd_top"><span class="lgd_name">台风</span></div>
+            <div class="smallTitle">
+              <span style="margin-left: 10px">预报机构</span>
+              <div class="lendIcon" style="float: right">
+                <img
+                  src="/dataGis/static/ultra/img/gis/typhoon/forecast-zg.png"
+                />中国
+              </div>
+            </div>
+
+            <div class="smallTitle">
+              <span style="margin-left: 10px">台风等级</span>
+            </div>
+            <div class="smallLegendBox">
+              <div class="lendIcon">
+                <img
+                  src="/dataGis/static/ultra/img/gis/typhoon/typhoonlevel1.png"
+                  style="margin-top: 4px; float: left"
+                />热带低压
+              </div>
+              <div class="lendIcon">
+                <img
+                  src="/dataGis/static/ultra/img/gis/typhoon/typhoonlevel2.png"
+                  style="margin-top: 4px; float: left"
+                />热带风暴
+              </div>
+              <div class="lendIcon" style="margin-left: 12px">
+                <img
+                  src="/dataGis/static/ultra/img/gis/typhoon/typhoonlevel5.png"
+                  style="margin-top: 4px; float: left"
+                />强台风
+              </div>
+              <div class="lendIcon">
+                <img
+                  src="/dataGis/static/ultra/img/gis/typhoon/typhoonlevel6.png"
+                  style="margin-top: 4px; float: left"
+                />超强台风
+              </div>
+              <div class="lendIcon">
+                <img
+                  src="/dataGis/static/ultra/img/gis/typhoon/typhoonlevel3.png"
+                  style="margin-top: 4px; float: left"
+                />强热带风暴
+              </div>
+              <div class="lendIcon">
+                <img
+                  src="/dataGis/static/ultra/img/gis/typhoon/typhoonlevel4.png"
+                  style="margin-top: 4px; float: left"
+                />台风
+              </div>
+            </div>
+          </li>
+          <li class="lgd_soli" style="display: none"></li>
+          <li class="lgd_radar" style="display: none">
+            <div class="lgd_top">
+              <span class="lgd_name">雷达(基本反射率)</span>
+            </div>
+            <img src="/dataGis/static/ultra/img/gis/lgd_radar.png" />
+          </li>
+          <li class="lgd_sata" style="display: none">
+            <div class="lgd_top"><span class="lgd_name">卫星</span></div>
+          </li>
+        </ul>
+        <!-- <div class="lgd_text">
+          <span class="lgd_btn lgd_show">图例</span>
+        </div> -->
+      </div>
     </div>
     <script>
       console.log(
         '\nWebGIS 入门实战教程：https://xiaozhuanlan.com/webgis ，\n',
       );
       var ctx = 'http://localhost:8080/dataGis';
+      var ctxStatic = './static';
       // var ctx = 'http://data.cma.cn/dataGis';
       var globalParam = {};
     </script>

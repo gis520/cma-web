@@ -52,6 +52,7 @@ module.exports = [
         { from: 'libs', to: 'libs' },
         { from: 'images', to: 'images' },
         { from: 'styles', to: 'styles' },
+        { from: 'public/static', to: 'static' },
       ]),
       new webpack.DefinePlugin({
         // Define relative base path in  for loading assets

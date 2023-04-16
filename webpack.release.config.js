@@ -11,25 +11,25 @@ module.exports = [
   {
     context: __dirname,
     entry: {
-      app: rootPath + 'index.js'
+      app: rootPath + 'index.js',
     },
     output: {
       filename: '[name].js',
       path: path.resolve(__dirname, 'dist'),
 
       // Needed by  for multiline strings
-      sourcePrefix: ''
+      sourcePrefix: '',
     },
     amd: {
       // Enable webpack-friendly use of require in
-      toUrlUndefined: true
+      toUrlUndefined: true,
     },
     node: {
       // Resolve node module use of fs
-      fs: 'empty'
+      fs: 'empty',
     },
     resolve: {
-      alias: {}
+      alias: {},
     },
     module: {
       rules: [
@@ -41,14 +41,14 @@ module.exports = [
               loader: 'css-loader',
               options: {
                 // Minify css
-                minimize: true
-              }
-            }
-          ]
+                minimize: true,
+              },
+            },
+          ],
         },
         {
           test: /\.(png|gif|jpg|jpeg|svg|xml|json)$/,
-          use: ['url-loader']
+          use: ['url-loader'],
         },
         {
           // Remove pragmas
@@ -60,27 +60,28 @@ module.exports = [
               loader: 'strip-pragma-loader',
               options: {
                 pragmas: {
-                  debug: false
-                }
-              }
-            }
-          ]
-        }
-      ]
+                  debug: false,
+                },
+              },
+            },
+          ],
+        },
+      ],
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: rootPath + 'index.html'
+        template: rootPath + 'index.html',
       }),
       // Copy  Assets, Widgets, and Workers to a static directory
       new CopyWebpackPlugin([
         { from: 'libs', to: 'libs' },
         { from: 'images', to: 'images' },
-        { from: 'styles', to: 'styles' }
+        { from: 'styles', to: 'styles' },
+        { from: 'public/static', to: 'static' },
       ]),
       new webpack.DefinePlugin({
         // Define relative base path in  for loading assets
-        _BASE_URL: JSON.stringify('')
+        _BASE_URL: JSON.stringify(''),
       }),
       // Uglify js files
       new UglifyJsPlugin(),
@@ -89,8 +90,8 @@ module.exports = [
         name: 'giscafer',
         minChunks: function (module) {
           return module.context && module.context.indexOf('giscafer') !== -1;
-        }
-      })
-    ]
-  }
+        },
+      }),
+    ],
+  },
 ];

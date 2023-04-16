@@ -1,0 +1,42 @@
+.pagination {
+            font-size: 80%;text-align: center;
+        }
+        
+.pagination a {
+    text-decoration: none;
+	border: solid 1px #e2ecf0;
+	color:#000;
+}
+
+.pagination a, .pagination span {
+   /*  display: block;
+    float: left; */
+    display:inline-block;
+    margin-right: 4px;
+	//margin-bottom: 5px;
+	margin-top:2px;
+	min-width:22px;
+	height:22px;
+	font:12px 'Microsoft Yahei';
+	-webkit-transform:scale(0.8);
+	text-align:center;
+	line-height:20px;
+}
+
+.pagination .current {
+	width:22px;
+	height:22px;
+    background: #41b5e9;
+    color: #fff;
+	border: none;
+}
+
+.pagination .current.prev, .pagination .current.next{
+	color:#999;
+	border-color:#999;
+	background:#fff;
+}
+.pagination span.prev,.pagination a.prev,.pagination span.next,.pagination a.next{
+	border: solid 1px #b6b2b3;
+	width:40px;
+}

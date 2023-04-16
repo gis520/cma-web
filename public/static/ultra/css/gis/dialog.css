@@ -1,0 +1,122 @@
+.importMain{
+	width: 500px;
+	 height: 320px;
+    display: block;
+    position: absolute;
+    z-index: 7002;
+    background-color: #ffffff;
+    top: 20%;
+    left:32%;
+    border-radius:5px;
+    border-color: #79b6ff;
+    border-width: 2px;
+   	opacity:0.9; 
+}
+.importMaindiv{
+	width: 500px;
+    height: 32px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #e7f1fe;
+    display: inherit;
+    /* line-height: 40px !important; */
+    padding-top:8px;
+    text-align: center;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+}
+.importMaindiv2{
+	width: 500px;
+    height: 22px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #faf7d6;
+    font: 13px '微软雅黑';
+    font-weight: bold;
+    color: #ffffff;
+    display: inherit;
+    line-height: 40px !important;
+    height: 40px;
+    text-align: center;
+    padding-top:8
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+}
+.importColumnMain{
+	width: 500px;
+    position: relative;
+    height: 220px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #FFFDF9;
+    
+}
+.importInnerShow{
+	width: 500px;
+    height: 220px;
+    margin-left: auto;
+    margin-right: auto;
+    border-top: 1px solid #dadadc;
+    border-left: 1px solid #fff;
+	border-right: 1px solid #fff;
+}
+.importMainCities{
+	float: left;
+    margin-top: 10px;
+    margin-left: 20px;
+    font-size: 14px;
+}
+.province{
+	display:block;
+	width:14px;
+	height:14px;
+	color:#333;
+	float:left;
+	margin-top:3px;
+	margin-right:5px;
+}
+.prounchecked{
+	background:url('../../img/gis/proUnchecked.png') no-repeat 0px 0px;
+}
+.prochecked{
+	background:url('../../img/gis/proChecked.png') no-repeat 0px 0px;
+}
+.provinceName{
+	width:56px;
+	float:left;
+}
+.bottomStyle{
+	width: 100%;
+    height: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    float: left;
+}
+.saveButtom,.cancleButtom{
+	float: left;
+    height: 28px;
+    width: 79px;
+    line-height: 40px !important;
+    text-align:center;
+    background-color: #377ad1;
+    border-radius: 5px;
+    cursor: pointer;
+    font: 16px '微软雅黑';
+    color: #ffffff;
+    margin-left: 50px;
+}
+.provinceMapTitle{height:35px;position:absolute;cursor:pointer;z-index:1000;top:24px;left:170px;
+					font:bold 18px 'Microsoft Yahei';color:#333;
+}
+ul{list-style:none;margin:0px;}
+.xzfont{
+	color:#2f79d2;
+	font: 18px '微软雅黑';
+	font-weight: bold;
+}
+.tipfont{
+	color:#ff6329;
+	font: 13px '微软雅黑';
+    font-weight: bold;
+}
